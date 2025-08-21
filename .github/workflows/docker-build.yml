@@ -1,0 +1,29 @@
+name: Build and Push Python Docker image
+
+on:
+  push:
+    branches: ["main"]
+
+jobs:
+  build:
+    runs-on: ediko-runner
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Log in to Nexus Docker Registry
+        run: echo "${{ secrets.NEXUS_PASS }}" | docker login ${{ secrets.NEXUS_REGISTRY }} -u "${{ secrets.NEXUS_USER }}" --password-stdin
+
+      - name: Build Docker image
+        run: |
+          IMAGE=${{ secrets.NEXUS_REGISTRY }}/ediko/my-python-app
+          TAG=${GITHUB_SHA::7} # short commit SHA as tag
+          docker build -t $IMAGE:$TAG -t $IMAGE:latest .
+
+      - name: Push Docker image
+        run: |
+          IMAGE=${{ secrets.NEXUS_REGISTRY }}/ediko/my-python-app
+          TAG=${GITHUB_SHA::7}
+          docker push $IMAGE:$TAG
+          docker push $IMAGE:latest
