@@ -35,3 +35,4 @@ jobs:
             ${{ secrets.NEXUS_REGISTRY }}/ediko/my-python-app:latest
           buildkitd-flags: '--allow-insecure-entitlement network.host'
           driver-opts: network=host
+          network: host
