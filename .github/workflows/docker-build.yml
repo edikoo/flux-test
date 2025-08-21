@@ -33,5 +33,6 @@ jobs:
           tags: |
             ${{ secrets.NEXUS_REGISTRY }}/ediko/my-python-app:${{ github.sha }}
             ${{ secrets.NEXUS_REGISTRY }}/ediko/my-python-app:latest
-          add-hosts: edi.crocobet.ro:10.0.10.96
+          add-hosts: |
+            edi.crocobet.ro:10.0.10.96
           network: host
