@@ -24,6 +24,10 @@ jobs:
           username: ${{ secrets.NEXUS_USER }}
           password: ${{ secrets.NEXUS_PASS }}
 
+      - name: Add Nexus host mapping
+        run: |
+          echo "10.0.10.96 edi.crocobet.ro" | sudo tee -a /etc/hosts
+
       # 3. Build & push
       - name: Build and push Docker image
         uses: docker/build-push-action@v5
