@@ -33,8 +33,6 @@ jobs:
           tags: |
             ${{ secrets.NEXUS_REGISTRY }}/ediko/my-python-app:${{ github.sha }}
             ${{ secrets.NEXUS_REGISTRY }}/ediko/my-python-app:latest
-          add-hosts: |
-            edi.crocobet.ro:10.0.10.96   
-          buildkitd-flags: '--allow-insecure-entitlement network.host'
+          buildkitd-flags: '--allow-insecure-entitlement network.host --add-host edi.crocobet.ro:10.0.10.96'
           driver-opts: network=host
           network: host
