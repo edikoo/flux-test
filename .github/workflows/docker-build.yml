@@ -33,3 +33,5 @@ jobs:
           tags: |
             ${{ secrets.NEXUS_REGISTRY }}/ediko/my-python-app:${{ github.sha }}
             ${{ secrets.NEXUS_REGISTRY }}/ediko/my-python-app:latest
+          allow: network.host,security.insecure #NEW
+          network: host #NEW
