@@ -36,3 +36,6 @@ jobs:
           add-hosts: |
             edi.crocobet.ro:10.0.10.96
           network: host
+
+
+          
