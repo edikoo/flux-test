@@ -17,9 +17,6 @@ FROM python:3.11-slim
 
 WORKDIR /app
 
-# Copy installed packages from builder
-COPY --from=build /install /usr/local
-
 # Copy app code
 COPY . .
 
